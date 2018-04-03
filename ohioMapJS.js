@@ -37,7 +37,7 @@ info.addTo(map);
         
     //}
 }
-setInterval(function  buildC(){
+function  buildC(){
     geojson = L.geoJson(statesData, {
         style: style,
         onEachFeature: onEachFeature
@@ -46,9 +46,7 @@ setInterval(function  buildC(){
         }
    
     }).addTo(map);
-    
-    renderMyMap();
-},100)
+}
 
 //When adding the info
 info.onAdd = function (map) {

@@ -279,6 +279,7 @@
             x.checked = true;
             //alert("ages1 is true")
             ASelect = 1;
+            buildC();
             }
             else{
             x.checked = false;
@@ -297,6 +298,7 @@
             x.checked = true;
             //alert("ages2 is true")
             ASelect = 2;
+            buildC();
             }
             else{
             x.checked = false;
@@ -315,6 +317,7 @@
             x.checked = true;
             //alert("ages3 is true")
             ASelect = 3;
+            buildC();
             }
             else{
             x.checked = false;
@@ -333,6 +336,7 @@
             x.checked = true;
             //alert("ages4 is true")
             ASelect = 4;
+            buildC();
             }
             else{
             x.checked = false;
@@ -351,6 +355,7 @@
             x.checked = true;
             //alert("ages5 is true")
             ASelect = 5;
+            buildC();
             }
             else{
             x.checked = false;
@@ -369,6 +374,7 @@
             x.checked = true;
             //alert("ages6 is true")
             ASelect = 6;
+            buildC();
             }
             else{
             x.checked = false;
@@ -387,6 +393,7 @@
             x.checked = true;
             //alert("ages7 is true")
             ASelect = 7;
+            buildC();
             }
             else{
             x.checked = false;
