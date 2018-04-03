@@ -1,16 +1,17 @@
 #map {
-    width: 100%;
+    width: 65%;
     height: 900px;
     z-index: 1;
     position: relative;
 }
-/* #datatable{ 
+ #datatable{ 
     z-index: 2;
     position: fixed;
     top: 0px;
     bottom: 100px;
     left: 65%;
-    height:900px;*/
+    height:900px;
+
 }
 #menu {
     width:10%;
@@ -43,19 +44,74 @@ body {
     z-index: 2;
     top: 0;
     left: 0;
-    opacity: .50;
-    background-color: red;
+    opacity: 1;
+    background-color: #ffffff;
     overflow-x: hidden;
-    transition: 0.9s;
+    transition: .6s;
 }
 
 .sidenav a {
     text-decoration: none;
-    font-size: 15px;
-    color: black;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
     display: block;
     transition: 0.3s;
 }
+
+.categorybutton {
+    font-size: 15px;
+    display: block;
+    transition: 0.3s;
+    background-color: rgb(156, 235, 255); /* Black */
+    border: 5px solid rgb(156, 235, 255); /* White */
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    padding: 10px 80px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*Subclass button refers to the subclasses in each of the catagories in the sidebar*/
+.subclassbutton {
+    font-size: 10px;
+    display: block;
+    transition: 0.3s;
+    background-color: #ffffff; /* White */
+    border: 2px solid rgb(0, 0, 0); /* Green */
+    border-radius: 8px;
+    color: black;
+    padding: 10px 80px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.subclassbutton:hover {
+    font-size: 12px;
+    display: block;
+    transition: 0.3s;
+    background-color: #000000; /* Black */
+    border: 5px solid rgb(156, 235, 255); /* White */
+    border-radius: 10px;
+    color: rgb(156, 235, 255);
+    padding: 10px 80px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.subclassbutton:checked {
+    font-size: 15px;
+    display: block;
+    transition: 0.3s;
+    background-color: #ca1212; /* Black */
+    border: 5px solid rgb(255, 255, 255); /* White */
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    padding: 10px 80px;
+    text-align: center;
+    text-decoration: none;
+}
+
 .sidenav p {
     text-decoration: none;
     font-size: 15px;

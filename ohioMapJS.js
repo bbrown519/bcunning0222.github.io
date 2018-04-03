@@ -16,6 +16,7 @@ var info = L.control();
 
 window.onload = function () {
     renderMyMap();
+    buildC();
 }
 function renderMyMap() {
 
@@ -32,14 +33,22 @@ function renderMyMap() {
 info.addTo(map);
 
     //geojson is declared as a global varialbe, outside the function assigned to the window.onload  
-    //if(document.getElementById("age").checked === true){
-        geojson = L.geoJson(statesData, {
-            style: style,
-            onEachFeature: onEachFeature
-        }).addTo(map);
-        L.geojson()
+    //if(document.getElementById("age").checked === true){ 
+        
     //}
 }
+setInterval(function  buildC(){
+    geojson = L.geoJson(statesData, {
+        style: style,
+        onEachFeature: onEachFeature
+        ,filter: function(feature,layer){
+            return (feature.properties.A===ASelect)
+        }
+   
+    }).addTo(map);
+    
+    renderMyMap();
+},100)
 
 //When adding the info
 info.onAdd = function (map) {
@@ -49,12 +58,11 @@ info.onAdd = function (map) {
     this.update();
     return this._div;
 };
-
 //Update the info based on what state user has clicked on
 info.update = function (props) {
     this._div.innerHTML = '<h4>the age is (1-7) </h4>' + (props ?
         '<b>' + props.A + '</b><br />' + props.A + ' Years old'
-        : 'Hover over a state');
+        : 'Hover over a state'+'the county selected='+ASelect);
 };
 
 // get color depending on population density value
@@ -118,7 +126,6 @@ function highlightFeature(e) {
 
     info.update(layer.feature.properties);
 
-    triggerBarHighlight(layer.feature.properties.name);
 }
 
 
@@ -126,7 +133,6 @@ function resetHighlight(e) {
     geojson.resetStyle(e.target);
     info.update();
     //e.target will get us to the layer
-    triggerBarReset(e.target.feature.properties.name);
 }
 function onEachFeature(feature, layer) {
     layer.on({

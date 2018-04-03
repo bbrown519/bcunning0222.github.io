@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ohio---counties </title>
+	<title>Ohio Counties</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=false;>
 	<!-- styleSheets -->
@@ -25,44 +25,44 @@
     
 	
 	
-		<span style="font-size:30px;cursor:pointer;" onclick="openNav()" id="open">&#9776; open</span>
+		<span style="font-size:30px;cursor:pointer;" onclick="openNav()" id="open">&#9776; Menu</span>
       <div id="map"></div>
       <!--datatable-->
 	<div id="datatable"></div>
 	<!--<div id="menu"> this is where a menu would be and dropdown menus</div>-->
 	<div onload = "RESET()" onload = "RESETSUB()" id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<p>click 2 choices (click reset to reset) </p>
-			<p style="text-align:center;"><button onclick="myFunction1()">age <input type="checkbox" id="age"></button><br></p>
+            <p>click 2 choices (click reset to reset) </p>
+            <button class = "categorybutton" onclick="RESET()" onclick= "RESETSUB()">Reset</button><br>
+			<p style="text-align:center;"><button class = "categorybutton" onclick="myFunction1()">age <input type="checkbox" id="age"></button><br></p>
 				<p style="text-align:center;">__________________</p>
-				<a ><button onclick="ageS1()">10-20 <input type="radio" id="ageS1" name="age"></button><br></a>
-				<a ><button onclick="ageS2()">20-30 <input type="radio" id="ageS2" name="age"></button><br></a>
-				<a ><button onclick="ageS3()">30-40 <input type="radio" id="ageS3" name="age"></button><br></a>
-				<a ><button onclick="ageS4()">40-50 <input type="radio" id="ageS4" name="age"></button><br></a>
-				<a ><button onclick="ageS5()">50-60 <input type="radio" id="ageS5" name="age"></button><br></a>
-				<a ><button onclick="ageS6()">60-70 <input type="radio" id="ageS6" name="age"></button><br></a>
-				<a ><button onclick="ageS7()">70-80 <input type="radio" id="ageS7" name="age"></button><br></a>
-			<p style="text-align:center;"><button onclick="myFunction()">education<input type="checkbox" id="education"></button><br></p>
+				<a ><button class = "subclassbutton" onclick="ageS1()">10-20 <input type="radio" id="ageS1" name="age"></button><br></a>
+				<a ><button class = "subclassbutton" onclick="ageS2()">20-30 <input type="radio" id="ageS2" name="age"></button><br></a>
+				<a ><button class = "subclassbutton" onclick="ageS3()">30-40 <input type="radio" id="ageS3" name="age"></button><br></a>
+				<a ><button class = "subclassbutton" onclick="ageS4()">40-50 <input type="radio" id="ageS4" name="age"></button><br></a>
+				<a ><button class = "subclassbutton" onclick="ageS5()">50-60 <input type="radio" id="ageS5" name="age"></button><br></a>
+				<a ><button class = "subclassbutton" onclick="ageS6()">60-70 <input type="radio" id="ageS6" name="age"></button><br></a>
+				<a ><button class = "subclassbutton" onclick="ageS7()">70-80 <input type="radio" id="ageS7" name="age"></button><br></a>
+			<p style="text-align:center;"><button class = "categorybutton" onclick="myFunction()">education<input type="checkbox" id="education"></button><br></p>
 				<p style="text-align:center;">__________________</p>
-				<a href="#"><button onclick="educationS1()">highschool <input type="radio" id="educationS1" name="education"></button><br></a>
-				<a href="#"><button onclick="educationS2()">associate degree <input type="radio" id="educationS2" name="education"></button><br></a>
-				<a href="#"><button onclick="educationS3()">bachalor degree <input type="radio" id="educationS3" name="education"></button><br></a>
-				<a href="#"><button onclick="educationS4()">college+ <input type="radio" id="educationS4" name="education"></button><br></a>
-			<p style="text-align:center;"><button onclick="myFunction3()">religon<input type="checkbox" id="religon"></button><br></p>
+				<a href="#"><button class = "subclassbutton" onclick="educationS1()">highschool <input type="radio" id="educationS1" name="education"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="educationS2()">associate degree <input type="radio" id="educationS2" name="education"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="educationS3()">bachalor degree <input type="radio" id="educationS3" name="education"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="educationS4()">college+ <input type="radio" id="educationS4" name="education"></button><br></a>
+			<p style="text-align:center;"><button class = "categorybutton" onclick="myFunction3()">religon<input type="checkbox" id="religon"></button><br></p>
 				<p style="text-align:center;">__________________</p>
-				<a href="#"><button onclick="religonS1()">christian <input type="radio" id="religonS1" name="religon"></button><br></a>
-				<a href="#"><button onclick="religonS2()">hebrow <input type="radio" id="religonS2" name="religon"></button><br></a>
-				<a href="#"><button onclick="religonS3()">muslim <input type="radio" id="religonS3" name="religon"></button><br></a>
-				<a href="#"><button onclick="religonS4()">other <input type="radio" id="religonS4" name="religon"></button><br></a>
-			<p style="text-align:center;"><button onclick="myFunction2()">income<input type="checkbox" id="income"></button><br></p>
+				<a href="#"><button class = "subclassbutton" onclick="religonS1()">christian <input type="radio" id="religonS1" name="religon"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="religonS2()">hebrow <input type="radio" id="religonS2" name="religon"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="religonS3()">muslim <input type="radio" id="religonS3" name="religon"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="religonS4()">other <input type="radio" id="religonS4" name="religon"></button><br></a>
+			<p style="text-align:center;"><button class = "categorybutton" onclick="myFunction2()">income<input type="checkbox" id="income"></button><br></p>
 				<p style="text-align:center;">__________________</p>
-				<a href="#"><button onclick="incomeS1()">0%-25% <input type="radio" id="incomeS1" name="income"></button><br></a>
-				<a href="#"><button onclick="incomeS2()">25%-50% <input type="radio" id="incomeS2" name="income"></button><br></a>
-				<a href="#"><button onclick="incomeS3()">50%-75% <input type="radio" id="incomeS3" name="income"></button><br></a>
-				<a href="#"><button onclick="incomeS4()">75%-100% <input type="radio" id="incomeS4" name="income"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="incomeS1()">0%-25% <input type="radio" id="incomeS1" name="income"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="incomeS2()">25%-50% <input type="radio" id="incomeS2" name="income"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="incomeS3()">50%-75% <input type="radio" id="incomeS3" name="income"></button><br></a>
+				<a href="#"><button class = "subclassbutton" onclick="incomeS4()">75%-100% <input type="radio" id="incomeS4" name="income"></button><br></a>
 					
-					<button onclick="RESET()" onclick= "RESETSUB()">RESET </button><br>
-					<button onclick="show()"> show </button>
+
 		  </div>
 	  
 	  <script>

@@ -19,6 +19,10 @@
         var b = 0;
         var c = 0;
         var d = 0;
+        var ASelect = 0;
+        var ESelect = 0;
+        var ISelect = 0;
+        var RSelect = 0;
 
     function myFunction() {
     if((a+b+c+d)>1){
@@ -197,15 +201,6 @@
             
             
     }
-    function show() {
-    alert(
-        a+"= education \n"+
-        b+"=age\n"+
-        c+"=income\n"+
-        d+"=religon")
-        
-        
-    }
     // functions for the subclass
         //education subclass
     function educationS1(){
@@ -214,11 +209,10 @@
         }
         else{
         var x = document.getElementById("educationS1");
-        var county = 0;
+        
             if(x.checked === false){
             x.checked = true;
             alert("ed1 is true")
-            county = 1;
             }
             else{
             x.checked = false;
@@ -283,7 +277,8 @@
             var x = document.getElementById("ageS1");
             if(x.checked === false){
             x.checked = true;
-            alert("ages1 is true")
+            //alert("ages1 is true")
+            ASelect = 1;
             }
             else{
             x.checked = false;
@@ -300,7 +295,8 @@
             var x = document.getElementById("ageS2");
             if(x.checked === false){
             x.checked = true;
-            alert("ages2 is true")
+            //alert("ages2 is true")
+            ASelect = 2;
             }
             else{
             x.checked = false;
@@ -317,7 +313,8 @@
             var x = document.getElementById("ageS3");
             if(x.checked === false){
             x.checked = true;
-            alert("ages3 is true")
+            //alert("ages3 is true")
+            ASelect = 3;
             }
             else{
             x.checked = false;
@@ -334,7 +331,8 @@
             var x = document.getElementById("ageS4");
             if(x.checked === false){
             x.checked = true;
-            alert("ages4 is true")
+            //alert("ages4 is true")
+            ASelect = 4;
             }
             else{
             x.checked = false;
@@ -351,7 +349,8 @@
             var x = document.getElementById("ageS5");
             if(x.checked === false){
             x.checked = true;
-            alert("ages5 is true")
+            //alert("ages5 is true")
+            ASelect = 5;
             }
             else{
             x.checked = false;
@@ -368,7 +367,8 @@
             var x = document.getElementById("ageS6");
             if(x.checked === false){
             x.checked = true;
-            alert("ages6 is true")
+            //alert("ages6 is true")
+            ASelect = 6;
             }
             else{
             x.checked = false;
@@ -385,7 +385,8 @@
             var x = document.getElementById("ageS7");
             if(x.checked === false){
             x.checked = true;
-            alert("ages7 is true")
+            //alert("ages7 is true")
+            ASelect = 7;
             }
             else{
             x.checked = false;
