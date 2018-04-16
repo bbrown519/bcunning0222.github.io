@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Leaflet Sync Demo - with three maps listening</title>
+    <title>Religion, Education and Income</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
     <!-- styleSheets -->
@@ -14,7 +14,6 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="OhioCounties.json"></script>
     <script src="L.Map.Sync.js"></script>
-    <script src="interactiveMap.js"></script>
 
 
 </head>
@@ -27,11 +26,12 @@
     </div>
     <div id="map1title" class="title">
         <h2>Religion</h2>
-        <p>pick class for each map</p>
+        <p>Choose layers for each map.</p>
     </div>
     <div id="map2title" class="title">
         <h2>Income (top) and Education (bottom)</h2>
     </div>
+
     <script>
 
         //global variables:
@@ -60,43 +60,110 @@
         var map2base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map3base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map1baseW = L.tileLayer(WaterColorMap, stamenOptions);
-        var geojson1 = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
-        var geojson2 = L.geoJson(counties, { style: style2, onEachFeature: onEachFeature });
-        var geojson3 = L.geoJson(counties, { style: style3, onEachFeature: onEachFeature });
-        var map1layer = L.layerGroup([map1base, geojson1]);
-        var map2layer = L.layerGroup([map2base, geojson2]);
-        var map3layer = L.layerGroup([map3base, geojson3]);
+
+        //Religion Layers
+        var Catholic = L.geoJson(counties, { style: r180, onEachFeature: onEachFeature });
+        var EPro = L.geoJson(counties, { style: r280, onEachFeature: onEachFeature });
+        var MPro = L.geoJson(counties, { style: r380, onEachFeature: onEachFeature });
+        var Other = L.geoJson(counties, { style: r480, onEachFeature: onEachFeature });
+
+        //Income Layers
+        var Under25 = L.geoJson(counties, { style: i180, onEachFeature: onEachFeature });
+        var to50 = L.geoJson(counties, { style: i280, onEachFeature: onEachFeature });
+        var to75 = L.geoJson(counties, { style: i380, onEachFeature: onEachFeature });
+        var Over75 = L.geoJson(counties, { style: i480, onEachFeature: onEachFeature });
+
+        //Education Layers
+        var MS = L.geoJson(counties, { style: e180, onEachFeature: onEachFeature });
+        var HS = L.geoJson(counties, { style: e280, onEachFeature: onEachFeature });
+        var College = L.geoJson(counties, { style: e380, onEachFeature: onEachFeature });
+
+        // var e180 = L.geoJson(counties, { style: jewish1980, onEachFeature: onEachFeature });
+        // var map1layer = L.layerGroup([map1base, geojson1]);
+        // var test = L.layerGroup([map1base, jewish]);
+        // var map2layer = L.layerGroup([map2base, geojson2]);
+        // var map3layer = L.layerGroup([map3base, geojson3]);
+
         var map = L.map('map', {
-            layers: [map1layer],
+            layers: [map1base],
             center: center,
             zoom: 14,
             zoomControl: false
         });
 
+        var ReligionGroup = {
+            "Catholic": Catholic,
+            "Evangelical Protestant": EPro,
+            "Mainland Protestant": MPro,
+            "Other (Jewish, Muslim, Mormon)": Other,
+        };
+        var IncomeGroup = {
+            "Under $25,000": Under25,
+            "$25,000 to $50,000": to50,
+            "$50,000 to $75,000": to75,
+            "Over $75,000": Over75,
+        };
+        var EducationGroup = {
+            "Middle School": MS,
+            "High School": HS,
+            "College": College
+        };
+
+        //Map A Zoom
         var mapA = L.map('mapA', {
-            layers: [map2layer],
+            layers: [map2base],
             center: center,
             zoom: 14,
             zoomControl: false
         });
         var mapB = L.map('mapB', {
-            layers: [map3layer],
+            layers: [map3base],
             center: center,
             zoom: 14,
             zoomControl: false
         });
 
-        function style1(feature) {
+        function r180(feature) {
             return {
                 weight: .5,
                 opacity: 1,
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.Catholic1980)
+                fillColor: getColor(feature.properties.R180)
             };
         }
-        function style2(feature) {
+        function r280(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.R280)
+            };
+        }
+        function r380(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.R380)
+            };
+        }
+        function r480(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.R480)
+            };
+        }
+        function i180(feature) {
             return {
                 weight: .5,
                 opacity: 1,
@@ -106,6 +173,84 @@
                 fillColor: getColor(feature.properties.I180)
             };
         }
+        function i280(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.I280)
+            };
+        }
+        function i380(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.I380)
+            };
+        }
+        function i480(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.I480)
+            };
+        }
+        function e180(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.E180)
+            };
+        }
+        function e280(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.E280)
+            };
+        }
+        function e380(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor(feature.properties.E380)
+            };
+        }
+        function style1(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+            };
+        }
+        function style2(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+            };
+        }
         function style3(feature) {
             return {
                 weight: .5,
@@ -113,9 +258,11 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.HS)
             };
         }
+        L.control.layers(ReligionGroup).addTo(map);
+        L.control.layers(IncomeGroup).addTo(mapA);
+        L.control.layers(EducationGroup).addTo(mapB);
 
         var info = L.control({ position: 'topright' });
         geojson = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
@@ -211,7 +358,7 @@
 
         function highlightFeature(e) {
             var layer = e.target;
-
+            layer.bindPopup("<b>County: </b>" + e.name)
             layer.setStyle({
                 weight: 5,
                 color: '#666',
@@ -240,15 +387,13 @@
 
         function onEachFeature(feature, layer) {
             var layerStyle = {};
-            //Add popups with data and county name
-            if (feature.properties.NAME) {
-                layer.bindPopup("<b>County: </b>" + feature.properties.NAME)
-            }
             layer.on({
                 mouseover: highlightFeature,
                 mouseout: resetHighlight
             });
         }
+
+
         //!!!!!!!!!!!!!!!!!!!!
         map.sync(mapA, { syncCursor: true });
         map.sync(mapB, { syncCursor: true });
