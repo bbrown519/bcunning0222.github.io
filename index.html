@@ -725,7 +725,7 @@ function select2000(){
         }
         function highlightFeature(e) {
             var layer = e.target;
-            layer.bindPopup("<b>County: </b>" + e.name)
+            layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Religion(1980): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Religion(1990): </b>" + layer.feature.properties.R190 + "<br>" + "<b>Religion(2000): </b>" + layer.feature.properties.R100)
             layer.setStyle({
                 weight: 5,
                 color: '#666',
