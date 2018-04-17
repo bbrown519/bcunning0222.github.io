@@ -113,46 +113,46 @@ function select2000(){
         var map3base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map1baseW = L.tileLayer(WaterColorMap, stamenOptions);
 
-        //Religion Layers 80s
+        //Religion Layers (1980)
         var Catholic80 = L.geoJson(counties, { style: r180, onEachFeature: onEachFeature });
         var EPro80 = L.geoJson(counties, { style: r280, onEachFeature: onEachFeature });
         var MPro80 = L.geoJson(counties, { style: r380, onEachFeature: onEachFeature });
         var Other80 = L.geoJson(counties, { style: r480, onEachFeature: onEachFeature });
-            //Religion Layers 90s
+            //Religion Layers (1990)
             var Catholic90 = L.geoJson(counties, { style: r190, onEachFeature: onEachFeature });
             var EPro90 = L.geoJson(counties, { style: r290, onEachFeature: onEachFeature });
             var MPro90 = L.geoJson(counties, { style: r390, onEachFeature: onEachFeature });
             var Other90 = L.geoJson(counties, { style: r490, onEachFeature: onEachFeature });
-                //Religion Layers 2000s
+                //Religion Layers (2000)
                 var Catholic2000 = L.geoJson(counties, { style: r100, onEachFeature: onEachFeature });
                 var EPro2000 = L.geoJson(counties, { style: r200, onEachFeature: onEachFeature });
                 var MPro2000 = L.geoJson(counties, { style: r300, onEachFeature: onEachFeature });
                 var Other2000 = L.geoJson(counties, { style: r400, onEachFeature: onEachFeature });
-        //Income Layers 80s
+        //Income Layers (1980)
         var Under2580 = L.geoJson(counties, { style: i180, onEachFeature: onEachFeature });
         var to5080 = L.geoJson(counties, { style: i280, onEachFeature: onEachFeature });
         var to7580 = L.geoJson(counties, { style: i380, onEachFeature: onEachFeature });
         var Over7580 = L.geoJson(counties, { style: i480, onEachFeature: onEachFeature });
-            //Income Layers 90s
+            //Income Layers (1990)
             var Under2590 = L.geoJson(counties, { style: i190, onEachFeature: onEachFeature });
             var to5090 = L.geoJson(counties, { style: i290, onEachFeature: onEachFeature });
             var to7590 = L.geoJson(counties, { style: i390, onEachFeature: onEachFeature });
             var Over7590 = L.geoJson(counties, { style: i490, onEachFeature: onEachFeature });
-                //Income Layers 2000s
+                //Income Layers (2000)
                 var Under252000 = L.geoJson(counties, { style: i100, onEachFeature: onEachFeature });
                 var to502000 = L.geoJson(counties, { style: i200, onEachFeature: onEachFeature });
                 var to752000 = L.geoJson(counties, { style: i300, onEachFeature: onEachFeature });
                 var Over752000 = L.geoJson(counties, { style: i400, onEachFeature: onEachFeature });
 
-        //Education Layers80s
+        //Education Layers(1980)
         var MS80 = L.geoJson(counties, { style: e180, onEachFeature: onEachFeature });
         var HS80 = L.geoJson(counties, { style: e280, onEachFeature: onEachFeature });
         var College80 = L.geoJson(counties, { style: e380, onEachFeature: onEachFeature });
-            //Education Layers90s
+            //Education Layers(1990)
             var MS90 = L.geoJson(counties, { style: e190, onEachFeature: onEachFeature });
             var HS90 = L.geoJson(counties, { style: e290, onEachFeature: onEachFeature });
             var College90 = L.geoJson(counties, { style: e390, onEachFeature: onEachFeature });
-                //Education Layers2000s
+                //Education Layers(2000)
                 var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeature });
                 var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeature });
                 var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeature });
@@ -167,59 +167,59 @@ function select2000(){
             zoomControl: false,
             'maxBounds': maxBounds
         });
-// this is for the 80s group only
+// this is for the (1980) group only
         var ReligionGroup80 = {
-            "Catholic 80s": Catholic80,
-            "Evangelical Protestant 80s": EPro80,
-            "Mainland Protestant 80s": MPro80,
-            "Other 80s (Jewish, Muslim, Mormon, etc.)": Other80,
+            "Catholic (1980)": Catholic80,
+            "Evangelical Protestant (1980)": EPro80,
+            "Mainland Protestant (1980)": MPro80,
+            "Other (1980) (Jewish, Muslim, Mormon, etc.)": Other80,
         };
         var IncomeGroup80 = {
-            "Under $25,000 80s": Under2580,
-            "$25,000 to $50,000 80s": to5080,
-            "$50,000 to $75,000 80s": to7580,
-            "Over $75,000 80s": Over7580,
+            "Under $25,000 (1980)": Under2580,
+            "$25,000 to $50,000 (1980)": to5080,
+            "$50,000 to $75,000 (1980)": to7580,
+            "Over $75,000 (1980)": Over7580,
         };
         var EducationGroup80 = {
-            "Middle School 80s": MS80,
-            "High School 80s": HS80,
-            "College 80s": College80
+            "Middle School (1980)": MS80,
+            "High School (1980)": HS80,
+            "College (1980)": College80
         };
-        // this is for the 90s group only
+        // this is for the (1990) group only
         var ReligionGroup90 = {
-            "Catholic90s": Catholic90,
-            "Evangelical Protestant90s": EPro90,
-            "Mainland Protestant90s": MPro90,
-            "Other90s (Jewish, Muslim, Mormon, etc.)": Other90,
+            "Catholic(1990)": Catholic90,
+            "Evangelical Protestant(1990)": EPro90,
+            "Mainland Protestant(1990)": MPro90,
+            "Other(1990) (Jewish, Muslim, Mormon, etc.)": Other90,
         };
         var IncomeGroup90 = {
-            "Under $25,000 90s": Under2590,
-            "$25,000 to $50,000 90s": to5090,
-            "$50,000 to $75,000 90s": to7590,
-            "Over $75,000 90s": Over7590,
+            "Under $25,000 (1990)": Under2590,
+            "$25,000 to $50,000 (1990)": to5090,
+            "$50,000 to $75,000 (1990)": to7590,
+            "Over $75,000 (1990)": Over7590,
         };
         var EducationGroup90 = {
-            "Middle School 90s": MS90,
-            "High School 90s": HS90,
-            "College 90s": College90
+            "Middle School (1990)": MS90,
+            "High School (1990)": HS90,
+            "College (1990)": College90
         };
-        // this is for the 80s group only
+        // this is for the (1980) group only
         var ReligionGroup2000 = {
-            "Catholic 2000s": Catholic2000,
-            "Evangelical Protestant 2000s": EPro2000,
-            "Mainland Protestant 2000s": MPro2000,
-            "Other 2000s (Jewish, Muslim, Mormon, etc.)": Other2000,
+            "Catholic (2000)": Catholic2000,
+            "Evangelical Protestant (2000)": EPro2000,
+            "Mainland Protestant (2000)": MPro2000,
+            "Other (2000) (Jewish, Muslim, Mormon, etc.)": Other2000,
         };
         var IncomeGroup2000 = {
-            "Under $25,000 2000s": Under252000,
-            "$25,000 to $50,000 2000s": to502000,
-            "$50,000 to $75,000 2000s": to752000,
-            "Over $75,000 2000s": Over752000,
+            "Under $25,000 (2000)": Under252000,
+            "$25,000 to $50,000 (2000)": to502000,
+            "$50,000 to $75,000 (2000)": to752000,
+            "Over $75,000 (2000)": Over752000,
         };
         var EducationGroup2000 = {
-            "Middle School 2000s": MS2000,
-            "High School 2000s": HS2000,
-            "College 2000s": College2000
+            "Middle School (2000)": MS2000,
+            "High School (2000)": HS2000,
+            "College (2000)": College2000
         };
 
         //Map A Zoom
@@ -235,7 +235,7 @@ function select2000(){
             zoom: 14,
             zoomControl: false
         });
-        //right here starts the 80s style
+        //right here starts the (1980) style
         function r180(feature) {
             return {
                 weight: .5,
@@ -347,7 +347,7 @@ function select2000(){
             };
         }
 
-        //right here starts the 90s style
+        //right here starts the (1990) style
         function r190(feature) {
             return {
                 weight: .5,
@@ -458,7 +458,7 @@ function select2000(){
                 fillColor: getColor3(feature.properties.E390)
             };
         }
-        //right here starts the 2000s style
+        //right here starts the (2000) style
         function r100(feature) {
             return {
                 weight: .5,
@@ -599,7 +599,7 @@ function select2000(){
                 fillColor: getColor3(feature.properties.E180)
             };
         }
-        //control just the 80s 90s 2000s
+        //control just the (1980) (1990) (2000)
         
         
 
