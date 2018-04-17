@@ -156,12 +156,16 @@ function select2000(){
                 var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeature });
                 var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeature });
                 var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeature });
-
+        var maxBounds = [
+        [38, -84.4], //Southwest
+        [44, -81]  //Northeast
+    ];
         var map = L.map('map', {
             layers: [map1base],
             center: center,
             zoom: 14,
-            zoomControl: false
+            zoomControl: false,
+            'maxBounds': maxBounds
         });
 // this is for the 80s group only
         var ReligionGroup80 = {
