@@ -14,6 +14,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="OhioCounties.json"></script>
     <script src="L.Map.Sync.js"></script>
+    
 
 
 </head>
@@ -31,9 +32,60 @@
     <div id="map2title" class="title">
         <h2>Income (top) and Education (bottom)</h2>
     </div>
-
+    <div class="reset">
+            <button>Reset</button>
+        </div>
+    <div class="dropdown">
+        <button class="dropbtn">Open (choose years)</button>
+        <div class="dropdown-content">
+            <input class="year_menu" type="button" onclick="reset()"name="year" value="Refesh">Reset<br>
+            <input class="year_menu" type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
+            <input class="year_menu" type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
+            <input class="year_menu" type="radio" onclick="select2000()"name="year" value="2000"> 2000      
+        </div>
     <script>
+        var select = 0;
+        function reset(){
+            document.getElementsByClassName("year_menu").checked =false;
+            location.reload();
+        }
+function select1980(){
+    if (select===0){
+     L.control.layers(ReligionGroup80).addTo(map);
+     L.control.layers(IncomeGroup80).addTo(mapA);
+     L.control.layers(EducationGroup80).addTo(mapB);
+    }
+    else {
+        
+        alert("you have already chosen a year to chose a diffrent year you must reset first");
+    }
+    select = 1980;
+}
+function select1990(){
+    if (select===0){
+    L.control.layers(ReligionGroup90).addTo(map);
+    L.control.layers(IncomeGroup90).addTo(mapA);
+    L.control.layers(EducationGroup90).addTo(mapB);
+    }
+    else {
+        
+        alert("you have already chosen a year to chose a diffrent year you must reset first");
+    }
+    select = 1990;
 
+}
+function select2000(){
+    if (select===0){
+    L.control.layers(ReligionGroup2000).addTo(map);
+    L.control.layers(IncomeGroup2000).addTo(mapA);
+    L.control.layers(EducationGroup2000).addTo(mapB);
+    }
+    else {
+        
+        alert("you have already chosen a year to chose a diffrent year you must reset first");
+    }
+    select = 2000;
+}
         //global variables:
         var geojson;
         var map;
@@ -61,28 +113,49 @@
         var map3base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map1baseW = L.tileLayer(WaterColorMap, stamenOptions);
 
-        //Religion Layers
-        var Catholic = L.geoJson(counties, { style: r180, onEachFeature: onEachFeature });
-        var EPro = L.geoJson(counties, { style: r280, onEachFeature: onEachFeature });
-        var MPro = L.geoJson(counties, { style: r380, onEachFeature: onEachFeature });
-        var Other = L.geoJson(counties, { style: r480, onEachFeature: onEachFeature });
+        //Religion Layers 80s
+        var Catholic80 = L.geoJson(counties, { style: r180, onEachFeature: onEachFeature });
+        var EPro80 = L.geoJson(counties, { style: r280, onEachFeature: onEachFeature });
+        var MPro80 = L.geoJson(counties, { style: r380, onEachFeature: onEachFeature });
+        var Other80 = L.geoJson(counties, { style: r480, onEachFeature: onEachFeature });
+            //Religion Layers 90s
+            var Catholic90 = L.geoJson(counties, { style: r190, onEachFeature: onEachFeature });
+            var EPro90 = L.geoJson(counties, { style: r290, onEachFeature: onEachFeature });
+            var MPro90 = L.geoJson(counties, { style: r390, onEachFeature: onEachFeature });
+            var Other90 = L.geoJson(counties, { style: r490, onEachFeature: onEachFeature });
+                //Religion Layers 2000s
+                var Catholic2000 = L.geoJson(counties, { style: r100, onEachFeature: onEachFeature });
+                var EPro2000 = L.geoJson(counties, { style: r200, onEachFeature: onEachFeature });
+                var MPro2000 = L.geoJson(counties, { style: r300, onEachFeature: onEachFeature });
+                var Other2000 = L.geoJson(counties, { style: r400, onEachFeature: onEachFeature });
+        //Income Layers 80s
+        var Under2580 = L.geoJson(counties, { style: i180, onEachFeature: onEachFeature });
+        var to5080 = L.geoJson(counties, { style: i280, onEachFeature: onEachFeature });
+        var to7580 = L.geoJson(counties, { style: i380, onEachFeature: onEachFeature });
+        var Over7580 = L.geoJson(counties, { style: i480, onEachFeature: onEachFeature });
+            //Income Layers 90s
+            var Under2590 = L.geoJson(counties, { style: i190, onEachFeature: onEachFeature });
+            var to5090 = L.geoJson(counties, { style: i290, onEachFeature: onEachFeature });
+            var to7590 = L.geoJson(counties, { style: i390, onEachFeature: onEachFeature });
+            var Over7590 = L.geoJson(counties, { style: i490, onEachFeature: onEachFeature });
+                //Income Layers 2000s
+                var Under252000 = L.geoJson(counties, { style: i100, onEachFeature: onEachFeature });
+                var to502000 = L.geoJson(counties, { style: i200, onEachFeature: onEachFeature });
+                var to752000 = L.geoJson(counties, { style: i300, onEachFeature: onEachFeature });
+                var Over752000 = L.geoJson(counties, { style: i400, onEachFeature: onEachFeature });
 
-        //Income Layers
-        var Under25 = L.geoJson(counties, { style: i180, onEachFeature: onEachFeature });
-        var to50 = L.geoJson(counties, { style: i280, onEachFeature: onEachFeature });
-        var to75 = L.geoJson(counties, { style: i380, onEachFeature: onEachFeature });
-        var Over75 = L.geoJson(counties, { style: i480, onEachFeature: onEachFeature });
-
-        //Education Layers
-        var MS = L.geoJson(counties, { style: e180, onEachFeature: onEachFeature });
-        var HS = L.geoJson(counties, { style: e280, onEachFeature: onEachFeature });
-        var College = L.geoJson(counties, { style: e380, onEachFeature: onEachFeature });
-
-        // var e180 = L.geoJson(counties, { style: jewish1980, onEachFeature: onEachFeature });
-        // var map1layer = L.layerGroup([map1base, geojson1]);
-        // var test = L.layerGroup([map1base, jewish]);
-        // var map2layer = L.layerGroup([map2base, geojson2]);
-        // var map3layer = L.layerGroup([map3base, geojson3]);
+        //Education Layers80s
+        var MS80 = L.geoJson(counties, { style: e180, onEachFeature: onEachFeature });
+        var HS80 = L.geoJson(counties, { style: e280, onEachFeature: onEachFeature });
+        var College80 = L.geoJson(counties, { style: e380, onEachFeature: onEachFeature });
+            //Education Layers90s
+            var MS90 = L.geoJson(counties, { style: e190, onEachFeature: onEachFeature });
+            var HS90 = L.geoJson(counties, { style: e290, onEachFeature: onEachFeature });
+            var College90 = L.geoJson(counties, { style: e390, onEachFeature: onEachFeature });
+                //Education Layers2000s
+                var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeature });
+                var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeature });
+                var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeature });
         var maxBounds = [
         [38, -84.4], //Southwest
         [44, -81]  //Northeast
@@ -94,23 +167,59 @@
             zoomControl: false,
             'maxBounds': maxBounds
         });
-
-        var ReligionGroup = {
-            "Catholic": Catholic,
-            "Evangelical Protestant": EPro,
-            "Mainland Protestant": MPro,
-            "Other (Jewish, Muslim, Mormon, etc.)": Other,
+// this is for the 80s group only
+        var ReligionGroup80 = {
+            "Catholic 80s": Catholic80,
+            "Evangelical Protestant 80s": EPro80,
+            "Mainland Protestant 80s": MPro80,
+            "Other 80s (Jewish, Muslim, Mormon, etc.)": Other80,
         };
-        var IncomeGroup = {
-            "Under $25,000": Under25,
-            "$25,000 to $50,000": to50,
-            "$50,000 to $75,000": to75,
-            "Over $75,000": Over75,
+        var IncomeGroup80 = {
+            "Under $25,000 80s": Under2580,
+            "$25,000 to $50,000 80s": to5080,
+            "$50,000 to $75,000 80s": to7580,
+            "Over $75,000 80s": Over7580,
         };
-        var EducationGroup = {
-            "Middle School": MS,
-            "High School": HS,
-            "College": College
+        var EducationGroup80 = {
+            "Middle School 80s": MS80,
+            "High School 80s": HS80,
+            "College 80s": College80
+        };
+        // this is for the 90s group only
+        var ReligionGroup90 = {
+            "Catholic90s": Catholic90,
+            "Evangelical Protestant90s": EPro90,
+            "Mainland Protestant90s": MPro90,
+            "Other90s (Jewish, Muslim, Mormon, etc.)": Other90,
+        };
+        var IncomeGroup90 = {
+            "Under $25,000 90s": Under2590,
+            "$25,000 to $50,000 90s": to5090,
+            "$50,000 to $75,000 90s": to7590,
+            "Over $75,000 90s": Over7590,
+        };
+        var EducationGroup90 = {
+            "Middle School 90s": MS90,
+            "High School 90s": HS90,
+            "College 90s": College90
+        };
+        // this is for the 80s group only
+        var ReligionGroup2000 = {
+            "Catholic 2000s": Catholic2000,
+            "Evangelical Protestant 2000s": EPro2000,
+            "Mainland Protestant 2000s": MPro2000,
+            "Other 2000s (Jewish, Muslim, Mormon, etc.)": Other2000,
+        };
+        var IncomeGroup2000 = {
+            "Under $25,000 2000s": Under252000,
+            "$25,000 to $50,000 2000s": to502000,
+            "$50,000 to $75,000 2000s": to752000,
+            "Over $75,000 2000s": Over752000,
+        };
+        var EducationGroup2000 = {
+            "Middle School 2000s": MS2000,
+            "High School 2000s": HS2000,
+            "College 2000s": College2000
         };
 
         //Map A Zoom
@@ -126,7 +235,7 @@
             zoom: 14,
             zoomControl: false
         });
-
+        //right here starts the 80s style
         function r180(feature) {
             return {
                 weight: .5,
@@ -134,7 +243,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.R180)
+                fillColor: getColor1(feature.properties.R180)
             };
         }
         function r280(feature) {
@@ -144,7 +253,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.R280)
+                fillColor: getColor1(feature.properties.R280)
             };
         }
         function r380(feature) {
@@ -154,7 +263,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.R380)
+                fillColor: getColor1(feature.properties.R380)
             };
         }
         function r480(feature) {
@@ -164,7 +273,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.R480)
+                fillColor: getColor1(feature.properties.R480)
             };
         }
         function i180(feature) {
@@ -174,7 +283,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.I180)
+                fillColor: getColor2(feature.properties.I180)
             };
         }
         function i280(feature) {
@@ -184,7 +293,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.I280)
+                fillColor: getColor2(feature.properties.I280)
             };
         }
         function i380(feature) {
@@ -194,7 +303,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.I380)
+                fillColor: getColor2(feature.properties.I380)
             };
         }
         function i480(feature) {
@@ -204,7 +313,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.I480)
+                fillColor: getColor2(feature.properties.I480)
             };
         }
         function e180(feature) {
@@ -214,7 +323,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.E180)
+                fillColor: getColor3(feature.properties.E180)
             };
         }
         function e280(feature) {
@@ -224,7 +333,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.E280)
+                fillColor: getColor3(feature.properties.E280)
             };
         }
         function e380(feature) {
@@ -234,7 +343,230 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
-                fillColor: getColor(feature.properties.E380)
+                fillColor: getColor3(feature.properties.E380)
+            };
+        }
+
+        //right here starts the 90s style
+        function r190(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R190)
+            };
+        }
+        function r290(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R290)
+            };
+        }
+        function r390(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R390)
+            };
+        }
+        function r490(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R490)
+            };
+        }
+        function i190(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I190)
+            };
+        }
+        function i290(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I290)
+            };
+        }
+        function i390(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I390)
+            };
+        }
+        function i490(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I490)
+            };
+        }
+        function e190(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E190)
+            };
+        }
+        function e290(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E290)
+            };
+        }
+        function e390(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E390)
+            };
+        }
+        //right here starts the 2000s style
+        function r100(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R100)
+            };
+        }
+        function r200(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R200)
+            };
+        }
+        function r300(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R300)
+            };
+        }
+        function r400(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R400)
+            };
+        }
+        function i100(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I100)
+            };
+        }
+        function i200(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I200)
+            };
+        }
+        function i300(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I300)
+            };
+        }
+        function i400(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I400)
+            };
+        }
+        function e100(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E100)
+            };
+        }
+        function e200(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E200)
+            };
+        }
+        function e300(feature) {
+            return {
+                weight: .5,
+                opacity: 1,
+                color: 'black',
+                dashArray: '3',
+                fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E300)
             };
         }
         function style1(feature) {
@@ -244,6 +576,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
+                fillColor: getColor1(feature.properties.R180)
             };
         }
         function style2(feature) {
@@ -253,6 +586,7 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
+                fillColor: getColor2(feature.properties.I180)
             };
         }
         function style3(feature) {
@@ -262,11 +596,13 @@
                 color: 'black',
                 dashArray: '3',
                 fillOpacity: 1,
+                fillColor: getColor3(feature.properties.E180)
             };
         }
-        L.control.layers(ReligionGroup).addTo(map);
-        L.control.layers(IncomeGroup).addTo(mapA);
-        L.control.layers(EducationGroup).addTo(mapB);
+        //control just the 80s 90s 2000s
+        
+        
+
 
         var info = L.control({ position: 'topright' });
         geojson = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
@@ -284,7 +620,7 @@
                 to = grades[i + 1];
 
                 labels.push(
-                    '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                    '<i style="background:' + getColor1(from + 1) + '"></i> ' +
                     from + (to ? '%&ndash;' + to + '%' : '%+'));
             }
 
@@ -293,7 +629,7 @@
         };
         legend.addTo(map);
 
-        //Adding legendA to MapB
+        //Adding legendA to MapA
         var info = L.control({ position: 'topright' });
         geojson = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
         var legendA = L.control({ position: 'bottomright' });
@@ -310,7 +646,7 @@
                 to = grades[i + 1];
 
                 labels.push(
-                    '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                    '<i style="background:' + getColor2(from + 1) + '"></i> ' +
                     from + (to ? '%&ndash;' + to + '%' : '%+'));
             }
 
@@ -336,7 +672,7 @@
                 to = grades[i + 1];
 
                 labels.push(
-                    '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                    '<i style="background:' + getColor3(from + 1) + '"></i> ' +
                     from + (to ? '%&ndash;' + to + '%' : '%+'));
             }
 
@@ -346,23 +682,55 @@
         legendB.addTo(mapB);
 
         // get color depending on population density value
-        function getColor(d) {
-            return d > 90 ? 'hsl(0, 100%, 50%)' :
-                d > 80 ? 'hsl(40, 100%, 50%)' :
-                    d > 70 ? 'hsl(80, 100%, 50%)' :
-                        d > 60 ? 'hsl(120, 100%, 50%)' :
-                            d > 50 ? 'hsl(160, 100%, 50%)' :
-                                d > 40 ? 'hsl(200, 100%, 50%)' :
-                                    d > 30 ? 'hsl(240, 100%, 50%)' :
-                                        d > 20 ? 'hsl(280, 100%, 50%)' :
-                                            d > 10 ? 'hsl(320, 100%, 50%)' :
-                                                '#FFEDA0';
+                function getColor3(d) {
+            return d > 90 ? 'hsl(225, 80%, 15%)' :
+                d > 80 ? 'hsl(216, 86%, 23%)' :
+                    d > 70 ? 'hsl(210, 90%, 32%)' :
+                        d > 60 ? 'hsl(208, 69%, 42%)' :
+                            d > 50 ? 'hsl(204, 54%, 52%)' :
+                                d > 40 ? 'hsl(202, 57%, 63%)' :
+                                    d > 30 ? 'hsl(201, 53%, 75%)' :
+                                        d > 20 ? 'hsl(209, 56%, 86%)' :
+                                            d > 10 ? 'hsl(209, 61%, 92%)' :
+                                                d < 10 ? 'hsl(210, 100%, 98%' :
+                                                '#f7fbff';
         }
 
+                function getColor2(d) {
+            return d > 90 ? '#00441b' :
+                d > 80 ? '#006d2c' :
+                    d > 70 ? '#238b45' :
+                        d > 60 ? '#41ab5d' :
+                            d > 50 ? '#74c476' :
+                                d > 40 ? '#a1d99b' :
+                                    d > 30 ? '#c7e9c0' :
+                                        d > 20 ? '#e5f5e0' :
+                                            d > 10 ? '#f7fcf5' :
+                                                d < 10 ? 'hsl(210, 100%, 98%' :
+                                                '#f7fbff';
+        }
 
+                function getColor1(d) {
+            return d > 90 ? '#000000' :
+                d > 80 ? '#252525' :
+                    d > 70 ? '#525252' :
+                        d > 60 ? '#737373' :
+                            d > 50 ? '#969696' :
+                                d > 40 ? '#bdbdbd' :
+                                    d > 30 ? '#d9d9d9' :
+                                        d > 20 ? '#f0f0f0' :
+                                            d > 10 ? '#ffffff' :
+                                                d < 10 ? 'hsl(210, 100%, 98%' :
+                                                '#f7fbff';
+        }
         function highlightFeature(e) {
             var layer = e.target;
-            layer.bindPopup("<b>County: </b>" + e.name)
+            if (select==1990){
+                layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Catholic(1990): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Evangelical Protestant(1990): </b>" + layer.feature.properties.R280 + "<br>" + "<b>Mainland Protestant(1990): </b>" + layer.feature.properties.R380+ "<br><b>Other(1990): </b>" + layer.feature.properties.R480)
+            }else if (select==2000){
+                layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Catholic(2000): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Evangelical Protestant(2000): </b>" + layer.feature.properties.R280 + "<br>" + "<b>Mainland Protestant(2000): </b>" + layer.feature.properties.R380+ "<br><b>Other(2000): </b>" + layer.feature.properties.R480)            }
+            else{
+                layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Catholic(1980): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Evangelical Protestant(1980): </b>" + layer.feature.properties.R280 + "<br>" + "<b>Mainland Protestant(1980): </b>" + layer.feature.properties.R380+ "<br><b>Other(1980): </b>" + layer.feature.properties.R480)            }
             layer.setStyle({
                 weight: 5,
                 color: '#666',
