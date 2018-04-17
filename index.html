@@ -27,7 +27,6 @@
     </div>
     <div id="map1title" class="title">
         <h2>Religion</h2>
-        <p>Choose layers for each map.</p>
     </div>
     <div id="map2title" class="title">
         <h2>Income (top) and Education (bottom)</h2>
@@ -38,10 +37,9 @@
     <div class="dropdown">
         <button class="dropbtn">Open (choose years)</button>
         <div class="dropdown-content">
-            <input class="year_menu" type="button" onclick="reset()"name="year" value="Refesh">Reset<br>
-            <input class="year_menu" type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
-            <input class="year_menu" type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
-            <input class="year_menu" type="radio" onclick="select2000()"name="year" value="2000"> 2000      
+            <input id = "year_1980" class="year_menu" type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
+            <input id = "year_1990"class="year_menu" type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
+            <input id = "year_2000"class="year_menu" type="radio" onclick="select2000()"name="year" value="2000"> 2000      
         </div>
     <script>
         var select = 0;
@@ -56,8 +54,11 @@ function select1980(){
      L.control.layers(EducationGroup80).addTo(mapB);
     }
     else {
-        
-        alert("you have already chosen a year to chose a diffrent year you must reset first");
+        alert("page Refreshed");
+        document.getElementById("year_1980").checked = false;
+        document.getElementById("year_1990").checked = false;
+        document.getElementById("year_2000").checked = false;
+        location.reload();
     }
     select = 1980;
 }
@@ -68,8 +69,11 @@ function select1990(){
     L.control.layers(EducationGroup90).addTo(mapB);
     }
     else {
-        
-        alert("you have already chosen a year to chose a diffrent year you must reset first");
+        alert("page Refreshed");
+        document.getElementById("year_1980").checked = false;
+        document.getElementById("year_1990").checked = false;
+        document.getElementById("year_2000").checked = false;
+        location.reload();
     }
     select = 1990;
 
@@ -81,8 +85,12 @@ function select2000(){
     L.control.layers(EducationGroup2000).addTo(mapB);
     }
     else {
-        
-        alert("you have already chosen a year to chose a diffrent year you must reset first");
+
+        alert("page Refreshed");
+        document.getElementById("year_1980").checked = false;
+        document.getElementById("year_1990").checked = false;
+        document.getElementById("year_2000").checked = false;
+        location.reload();
     }
     select = 2000;
 }
@@ -113,113 +121,109 @@ function select2000(){
         var map3base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map1baseW = L.tileLayer(WaterColorMap, stamenOptions);
 
-        //Religion Layers (1980)
-        var Catholic80 = L.geoJson(counties, { style: r180, onEachFeature: onEachFeature });
-        var EPro80 = L.geoJson(counties, { style: r280, onEachFeature: onEachFeature });
-        var MPro80 = L.geoJson(counties, { style: r380, onEachFeature: onEachFeature });
-        var Other80 = L.geoJson(counties, { style: r480, onEachFeature: onEachFeature });
-            //Religion Layers (1990)
-            var Catholic90 = L.geoJson(counties, { style: r190, onEachFeature: onEachFeature });
-            var EPro90 = L.geoJson(counties, { style: r290, onEachFeature: onEachFeature });
-            var MPro90 = L.geoJson(counties, { style: r390, onEachFeature: onEachFeature });
-            var Other90 = L.geoJson(counties, { style: r490, onEachFeature: onEachFeature });
-                //Religion Layers (2000)
-                var Catholic2000 = L.geoJson(counties, { style: r100, onEachFeature: onEachFeature });
-                var EPro2000 = L.geoJson(counties, { style: r200, onEachFeature: onEachFeature });
-                var MPro2000 = L.geoJson(counties, { style: r300, onEachFeature: onEachFeature });
-                var Other2000 = L.geoJson(counties, { style: r400, onEachFeature: onEachFeature });
-        //Income Layers (1980)
-        var Under2580 = L.geoJson(counties, { style: i180, onEachFeature: onEachFeature });
-        var to5080 = L.geoJson(counties, { style: i280, onEachFeature: onEachFeature });
-        var to7580 = L.geoJson(counties, { style: i380, onEachFeature: onEachFeature });
-        var Over7580 = L.geoJson(counties, { style: i480, onEachFeature: onEachFeature });
-            //Income Layers (1990)
-            var Under2590 = L.geoJson(counties, { style: i190, onEachFeature: onEachFeature });
-            var to5090 = L.geoJson(counties, { style: i290, onEachFeature: onEachFeature });
-            var to7590 = L.geoJson(counties, { style: i390, onEachFeature: onEachFeature });
-            var Over7590 = L.geoJson(counties, { style: i490, onEachFeature: onEachFeature });
-                //Income Layers (2000)
-                var Under252000 = L.geoJson(counties, { style: i100, onEachFeature: onEachFeature });
-                var to502000 = L.geoJson(counties, { style: i200, onEachFeature: onEachFeature });
-                var to752000 = L.geoJson(counties, { style: i300, onEachFeature: onEachFeature });
-                var Over752000 = L.geoJson(counties, { style: i400, onEachFeature: onEachFeature });
+        //Religion Layers 80s
+        var Catholic80 = L.geoJson(counties, { style: r180, onEachFeature: onEachFeatureR });
+        var EPro80 = L.geoJson(counties, { style: r280, onEachFeature: onEachFeatureR });
+        var MPro80 = L.geoJson(counties, { style: r380, onEachFeature: onEachFeatureR });
+        var Other80 = L.geoJson(counties, { style: r480, onEachFeature: onEachFeatureR });
+            //Religion Layers 90s
+            var Catholic90 = L.geoJson(counties, { style: r190, onEachFeature: onEachFeatureR });
+            var EPro90 = L.geoJson(counties, { style: r290, onEachFeature: onEachFeatureR });
+            var MPro90 = L.geoJson(counties, { style: r390, onEachFeature: onEachFeatureR });
+            var Other90 = L.geoJson(counties, { style: r490, onEachFeature: onEachFeatureR });
+                //Religion Layers 2000s
+                var Catholic2000 = L.geoJson(counties, { style: r100, onEachFeature: onEachFeatureR });
+                var EPro2000 = L.geoJson(counties, { style: r200, onEachFeature: onEachFeatureR });
+                var MPro2000 = L.geoJson(counties, { style: r300, onEachFeature: onEachFeatureR });
+                var Other2000 = L.geoJson(counties, { style: r400, onEachFeature: onEachFeatureR });
+        //Income Layers 80s
+        var Under2580 = L.geoJson(counties, { style: i180, onEachFeature: onEachFeatureI });
+        var to5080 = L.geoJson(counties, { style: i280, onEachFeature: onEachFeatureI });
+        var to7580 = L.geoJson(counties, { style: i380, onEachFeature: onEachFeatureI });
+        var Over7580 = L.geoJson(counties, { style: i480, onEachFeature: onEachFeatureI });
+            //Income Layers 90s
+            var Under2590 = L.geoJson(counties, { style: i190, onEachFeature: onEachFeatureI });
+            var to5090 = L.geoJson(counties, { style: i290, onEachFeature: onEachFeatureI });
+            var to7590 = L.geoJson(counties, { style: i390, onEachFeature: onEachFeatureI  });
+            var Over7590 = L.geoJson(counties, { style: i490, onEachFeature: onEachFeatureI });
+                //Income Layers 2000s
+                var Under252000 = L.geoJson(counties, { style: i100, onEachFeature: onEachFeatureI });
+                var to502000 = L.geoJson(counties, { style: i200, onEachFeature: onEachFeatureI });
+                var to752000 = L.geoJson(counties, { style: i300, onEachFeature: onEachFeatureI });
+                var Over752000 = L.geoJson(counties, { style: i400, onEachFeature: onEachFeatureI });
 
-        //Education Layers(1980)
-        var MS80 = L.geoJson(counties, { style: e180, onEachFeature: onEachFeature });
-        var HS80 = L.geoJson(counties, { style: e280, onEachFeature: onEachFeature });
-        var College80 = L.geoJson(counties, { style: e380, onEachFeature: onEachFeature });
-            //Education Layers(1990)
-            var MS90 = L.geoJson(counties, { style: e190, onEachFeature: onEachFeature });
-            var HS90 = L.geoJson(counties, { style: e290, onEachFeature: onEachFeature });
-            var College90 = L.geoJson(counties, { style: e390, onEachFeature: onEachFeature });
-                //Education Layers(2000)
-                var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeature });
-                var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeature });
-                var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeature });
-        var maxBounds = [
-        [38, -84.4], //Southwest
-        [44, -81]  //Northeast
-    ];
+        //Education Layers80s
+        var MS80 = L.geoJson(counties, { style: e180, onEachFeature: onEachFeatureE });
+        var HS80 = L.geoJson(counties, { style: e280, onEachFeature: onEachFeatureE });
+        var College80 = L.geoJson(counties, { style: e380, onEachFeature: onEachFeatureE });
+            //Education Layers90s
+            var MS90 = L.geoJson(counties, { style: e190, onEachFeature: onEachFeatureE });
+            var HS90 = L.geoJson(counties, { style: e290, onEachFeature: onEachFeatureE });
+            var College90 = L.geoJson(counties, { style: e390, onEachFeature: onEachFeatureE });
+                //Education Layers2000s
+                var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeatureE });
+                var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeatureE });
+                var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeatureE });
+
         var map = L.map('map', {
             layers: [map1base],
             center: center,
             zoom: 14,
-            zoomControl: false,
-            'maxBounds': maxBounds
+            zoomControl: false
         });
-// this is for the (1980) group only
+// this is for the 80s group only
         var ReligionGroup80 = {
-            "Catholic (1980)": Catholic80,
-            "Evangelical Protestant (1980)": EPro80,
-            "Mainland Protestant (1980)": MPro80,
-            "Other (1980) (Jewish, Muslim, Mormon, etc.)": Other80,
+            "Catholic 80s": Catholic80,
+            "Evangelical Protestant 80s": EPro80,
+            "Mainland Protestant 80s": MPro80,
+            "Other 80s (Jewish, Muslim, Mormon, etc.)": Other80,
         };
         var IncomeGroup80 = {
-            "Under $25,000 (1980)": Under2580,
-            "$25,000 to $50,000 (1980)": to5080,
-            "$50,000 to $75,000 (1980)": to7580,
-            "Over $75,000 (1980)": Over7580,
+            "Under $25,000 80s": Under2580,
+            "$25,000 to $50,000 80s": to5080,
+            "$50,000 to $75,000 80s": to7580,
+            "Over $75,000 80s": Over7580,
         };
         var EducationGroup80 = {
-            "Middle School (1980)": MS80,
-            "High School (1980)": HS80,
-            "College (1980)": College80
+            "Middle School 80s": MS80,
+            "High School 80s": HS80,
+            "College 80s": College80
         };
-        // this is for the (1990) group only
+        // this is for the 90s group only
         var ReligionGroup90 = {
-            "Catholic(1990)": Catholic90,
-            "Evangelical Protestant(1990)": EPro90,
-            "Mainland Protestant(1990)": MPro90,
-            "Other(1990) (Jewish, Muslim, Mormon, etc.)": Other90,
+            "Catholic90s": Catholic90,
+            "Evangelical Protestant90s": EPro90,
+            "Mainland Protestant90s": MPro90,
+            "Other90s (Jewish, Muslim, Mormon, etc.)": Other90,
         };
         var IncomeGroup90 = {
-            "Under $25,000 (1990)": Under2590,
-            "$25,000 to $50,000 (1990)": to5090,
-            "$50,000 to $75,000 (1990)": to7590,
-            "Over $75,000 (1990)": Over7590,
+            "Under $25,000 90s": Under2590,
+            "$25,000 to $50,000 90s": to5090,
+            "$50,000 to $75,000 90s": to7590,
+            "Over $75,000 90s": Over7590,
         };
         var EducationGroup90 = {
-            "Middle School (1990)": MS90,
-            "High School (1990)": HS90,
-            "College (1990)": College90
+            "Middle School 90s": MS90,
+            "High School 90s": HS90,
+            "College 90s": College90
         };
-        // this is for the (1980) group only
+        // this is for the 80s group only
         var ReligionGroup2000 = {
-            "Catholic (2000)": Catholic2000,
-            "Evangelical Protestant (2000)": EPro2000,
-            "Mainland Protestant (2000)": MPro2000,
-            "Other (2000) (Jewish, Muslim, Mormon, etc.)": Other2000,
+            "Catholic 2000s": Catholic2000,
+            "Evangelical Protestant 2000s": EPro2000,
+            "Mainland Protestant 2000s": MPro2000,
+            "Other 2000s (Jewish, Muslim, Mormon, etc.)": Other2000,
         };
         var IncomeGroup2000 = {
-            "Under $25,000 (2000)": Under252000,
-            "$25,000 to $50,000 (2000)": to502000,
-            "$50,000 to $75,000 (2000)": to752000,
-            "Over $75,000 (2000)": Over752000,
+            "Under $25,000 2000s": Under252000,
+            "$25,000 to $50,000 2000s": to502000,
+            "$50,000 to $75,000 2000s": to752000,
+            "Over $75,000 2000s": Over752000,
         };
         var EducationGroup2000 = {
-            "Middle School (2000)": MS2000,
-            "High School (2000)": HS2000,
-            "College (2000)": College2000
+            "Middle School 2000s": MS2000,
+            "High School 2000s": HS2000,
+            "College 2000s": College2000
         };
 
         //Map A Zoom
@@ -235,7 +239,7 @@ function select2000(){
             zoom: 14,
             zoomControl: false
         });
-        //right here starts the (1980) style
+        //right here starts the 80s style
         function r180(feature) {
             return {
                 weight: .5,
@@ -347,7 +351,7 @@ function select2000(){
             };
         }
 
-        //right here starts the (1990) style
+        //right here starts the 90s style
         function r190(feature) {
             return {
                 weight: .5,
@@ -458,7 +462,7 @@ function select2000(){
                 fillColor: getColor3(feature.properties.E390)
             };
         }
-        //right here starts the (2000) style
+        //right here starts the 2000s style
         function r100(feature) {
             return {
                 weight: .5,
@@ -599,7 +603,7 @@ function select2000(){
                 fillColor: getColor3(feature.properties.E180)
             };
         }
-        //control just the (1980) (1990) (2000)
+        //control just the 80s 90s 2000s
         
         
 
@@ -723,14 +727,97 @@ function select2000(){
                                                 d < 10 ? 'hsl(210, 100%, 98%' :
                                                 '#f7fbff';
         }
-        function highlightFeature(e) {
+        function highlightFeatureR(e) {
             var layer = e.target;
-            if (select==1990){
-                layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Catholic(1990): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Evangelical Protestant(1990): </b>" + layer.feature.properties.R280 + "<br>" + "<b>Mainland Protestant(1990): </b>" + layer.feature.properties.R380+ "<br><b>Other(1990): </b>" + layer.feature.properties.R480)
-            }else if (select==2000){
-                layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Catholic(2000): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Evangelical Protestant(2000): </b>" + layer.feature.properties.R280 + "<br>" + "<b>Mainland Protestant(2000): </b>" + layer.feature.properties.R380+ "<br><b>Other(2000): </b>" + layer.feature.properties.R480)            }
-            else{
-                layer.bindPopup("<b>County: </b>" + layer.feature.properties.name + "<br>" + "<b>Catholic(1980): </b>" + layer.feature.properties.R180 + "<br>" + "<b>Evangelical Protestant(1980): </b>" + layer.feature.properties.R280 + "<br>" + "<b>Mainland Protestant(1980): </b>" + layer.feature.properties.R380+ "<br><b>Other(1980): </b>" + layer.feature.properties.R480)            }
+            if(select===1980){
+                layer.bindPopup(
+                "<b>County: </b>" + layer.feature.properties.name+
+                "<br><b>catholic 80's-: </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>evangelical 80's-: </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>maniline  80's-: </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>other 80's-: </b>" + layer.feature.properties.R480+"%")
+            }
+            if(select===1990){
+                layer.bindPopup(
+                "<b>County: </b>" + layer.feature.properties.name+
+                "<br><b>catholic 90's-: </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>evangelical 90's-: </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>maniline 90's-: </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>other 90's-: </b>" + layer.feature.properties.R480+"%")
+            }
+            if(select===2000){
+                layer.bindPopup(
+                "<b>County: </b>" + layer.feature.properties.name+
+                "<br><b>catholic 2000's-: </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>evangelical 2000's-: </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>maniline 2000's-: </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>other 2000's-: </b>" + layer.feature.properties.R480+"%")
+            }
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+        }
+            function highlightFeatureI(e) {
+                var layer = e.target;
+                if(select===1980){
+                    layer.bindPopup(
+                    "<b>County: </b>" + layer.feature.properties.name+
+                    "<br><b>under $25-000 80's-: </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 80's-: </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 80's-: </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>$75,000+ 80's-: </b>" + layer.feature.properties.I480+"%")
+                }
+                if(select===1990){
+                    layer.bindPopup(
+                    "<b>County: </b>" + layer.feature.properties.name+
+                    "<br><b>under $25,000 90's-: </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 90's-: </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 90's-: </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>$75,000+ 90's-: </b>" + layer.feature.properties.I480+"%")
+                }
+                if(select===2000){
+                    layer.bindPopup(
+                    "<b>County: </b>" + layer.feature.properties.name+
+                    "<br><b>under $25,000 2000's-: </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 2000's-: </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 2000's-: </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>$75,000+ 2000's-: </b>" + layer.feature.properties.I480+"%")
+                }
+                layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+            }
+
+            function highlightFeatureE(e) {
+            var layer = e.target;
+            if(select===1980){
+                layer.bindPopup(
+                "<b>County: </b>" + layer.feature.properties.name+
+                "<br><b>some middle school 80's-: </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>some high school 80's-: </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>some college 80's-: </b>" + layer.feature.properties.E380+"%")
+            }
+            if(select===1990){
+                layer.bindPopup(
+                "<b>County: </b>" + layer.feature.properties.name+
+                "<br><b>some middle school 90's-: </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>some high school 90's-: </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>some college 90's-: </b>" + layer.feature.properties.E380+"%")
+            }
+            if(select===2000){
+                layer.bindPopup(
+                "<b>County: </b>" + layer.feature.properties.name+
+                "<br><b>some middle school 2000's-: </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>some high school 2000's-: </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>some college 2000's-: </b>" + layer.feature.properties.E380+"%")
+            }
+            
             layer.setStyle({
                 weight: 5,
                 color: '#666',
@@ -752,15 +839,26 @@ function select2000(){
             });
         }
 
-        function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-        }
+       
 
-
-        function onEachFeature(feature, layer) {
+        function onEachFeatureR(feature, layer) {
             var layerStyle = {};
             layer.on({
-                mouseover: highlightFeature,
+                mouseover: highlightFeatureR,
+                mouseout: resetHighlight
+            });
+        }
+        function onEachFeatureI(feature, layer) {
+            var layerStyle = {};
+            layer.on({
+                mouseover: highlightFeatureI,
+                mouseout: resetHighlight
+            });
+        }
+        function onEachFeatureE(feature, layer) {
+            var layerStyle = {};
+            layer.on({
+                mouseover: highlightFeatureE,
                 mouseout: resetHighlight
             });
         }

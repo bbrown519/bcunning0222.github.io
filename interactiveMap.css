@@ -10,16 +10,18 @@
     position: absolute;
      width: 49.8%;
      height: 3%;
-     text-align: center;  }
-#map1title h2,p{background:lightgrey;color:red}
+     text-align: center;  
+     z-index: 2;}
+#map1title h2,p{background:lightgrey;color:red;z-index: 2;}
 #map2title {
     position: absolute;
     left: 50%;
     bottom:97%;
      width: 49.8%;
      height: 3%;
-     text-align: center;  }
-#map2title h2,p{background:lightgrey;color:red}
+     text-align: center;  
+     z-index: 2;}
+#map2title h2,p{background:lightgrey;color:red; z-index: 2;}
 
 .info {
     padding: 6px 8px;
@@ -53,12 +55,15 @@
 
 
 .dropbtn {
+    background-color: #4CAF50;
+    color: white;
     padding: 16px;
-    font-size: 16px;
+    font-size: 11px;
     border: none;
     cursor: pointer;
     z-index: 2;
     position: absolute;
+    opacity: .7;
 
 }
 
