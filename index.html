@@ -14,6 +14,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="OhioCounties.json"></script>
     <script src="L.Map.Sync.js"></script>
+    
 
 
 </head>
@@ -31,33 +32,59 @@
     <div id="map2title" class="title">
         <h2>Income (top) and Education (bottom)</h2>
     </div>
-    <div class="dropdown">
-        <button class="dropbtn">Time</button>
-        <div class="dropdown-content">
-            <input type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
-            <input type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
-            <input type="radio" onclick="select2000()"name="year" value="2000"> 2000      
+    <div class="reset">
+            <button>Reset</button>
         </div>
-
+    <div class="dropdown">
+        <button class="dropbtn">Open (choose years)</button>
+        <div class="dropdown-content">
+            <input class="year_menu" type="button" onclick="reset()"name="year" value="Refesh">Reset<br>
+            <input class="year_menu" type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
+            <input class="year_menu" type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
+            <input class="year_menu" type="radio" onclick="select2000()"name="year" value="2000"> 2000      
+        </div>
     <script>
         var select = 0;
+        function reset(){
+            document.getElementsByClassName("year_menu").checked =false;
+            location.reload();
+        }
 function select1980(){
-    
-
-    L.control.layers(ReligionGroup80).addTo(map);
-    L.control.layers(IncomeGroup80).addTo(mapA);
-    L.control.layers(EducationGroup80).addTo(mapB);
+    if (select===0){
+     L.control.layers(ReligionGroup80).addTo(map);
+     L.control.layers(IncomeGroup80).addTo(mapA);
+     L.control.layers(EducationGroup80).addTo(mapB);
+    }
+    else {
+        
+        alert("you have already chosen a year to chose a diffrent year you must reset first");
+    }
+    select = 1980;
 }
 function select1990(){
-    
+    if (select===0){
     L.control.layers(ReligionGroup90).addTo(map);
     L.control.layers(IncomeGroup90).addTo(mapA);
     L.control.layers(EducationGroup90).addTo(mapB);
+    }
+    else {
+        
+        alert("you have already chosen a year to chose a diffrent year you must reset first");
+    }
+    select = 1990;
+
 }
 function select2000(){
+    if (select===0){
     L.control.layers(ReligionGroup2000).addTo(map);
     L.control.layers(IncomeGroup2000).addTo(mapA);
     L.control.layers(EducationGroup2000).addTo(mapB);
+    }
+    else {
+        
+        alert("you have already chosen a year to chose a diffrent year you must reset first");
+    }
+    select = 2000;
 }
         //global variables:
         var geojson;
