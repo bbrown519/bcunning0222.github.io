@@ -165,58 +165,59 @@ function select2000(){
             zoom: 14,
             zoomControl: false
         });
+        //Layers for the 1980 groups
         var ReligionGroup80 = {
-            "Catholic 80s": Catholic80,
-            "Evangelical Protestant 80s": EPro80,
-            "Mainland Protestant 80s": MPro80,
-            "Other 80s (Jewish, Muslim, Mormon, etc.)": Other80,
+            "Catholic (1980)": Catholic80,
+            "Evangelical Protestant (1980)": EPro80,
+            "Mainland Protestant (1980)": MPro80,
+            "Other (1980) (Jewish, Muslim, Mormon, etc.)": Other80,
         };
         var IncomeGroup80 = {
-            "Under $25,000 80s": Under2580,
-            "$25,000 to $50,000 80s": to5080,
-            "$50,000 to $75,000 80s": to7580,
-            "Over $75,000 80s": Over7580,
+            "Under $25,000 (1980)": Under2580,
+            "$25,000 to $50,000 (1980)": to5080,
+            "$50,000 to $75,000 (1980)": to7580,
+            "Over $75,000 (1980)": Over7580,
         };
         var EducationGroup80 = {
-            "Middle School 80s": MS80,
-            "High School 80s": HS80,
-            "College 80s": College80
+            "Middle School (1980)": MS80,
+            "High School (1980)": HS80,
+            "College (1980)": College80
         };
-        // this is for the 90s group only
+        //Layers for the 1990 groups
         var ReligionGroup90 = {
-            "Catholic90s": Catholic90,
-            "Evangelical Protestant90s": EPro90,
-            "Mainland Protestant90s": MPro90,
-            "Other90s (Jewish, Muslim, Mormon, etc.)": Other90,
+            "Catholic (1990)": Catholic90,
+            "Evangelical Protestant (1990)": EPro90,
+            "Mainland Protestant (1990)": MPro90,
+            "Other - Jewish, Muslim, Mormon... (1990)": Other90,
         };
         var IncomeGroup90 = {
-            "Under $25,000 90s": Under2590,
-            "$25,000 to $50,000 90s": to5090,
-            "$50,000 to $75,000 90s": to7590,
-            "Over $75,000 90s": Over7590,
+            "Under $25,000 (1990)": Under2590,
+            "$25,000 to $50,000 (1990)": to5090,
+            "$50,000 to $75,000 (1990)": to7590,
+            "Over $75,000 (1990)": Over7590,
         };
         var EducationGroup90 = {
-            "Middle School 90s": MS90,
-            "High School 90s": HS90,
-            "College 90s": College90
+            "Middle School (1990)": MS90,
+            "High School (1990)": HS90,
+            "College (1990)": College90
         };
-        // this is for the 80s group only
+        //Layers for the 2000 groups
         var ReligionGroup2000 = {
-            "Catholic 2000s": Catholic2000,
-            "Evangelical Protestant 2000s": EPro2000,
-            "Mainland Protestant 2000s": MPro2000,
-            "Other 2000s (Jewish, Muslim, Mormon, etc.)": Other2000,
+            "Catholic (2000)": Catholic2000,
+            "Evangelical Protestant (2000)": EPro2000,
+            "Mainland Protestant (2000)": MPro2000,
+            "Other (2000) (Jewish, Muslim, Mormon, etc.)": Other2000,
         };
         var IncomeGroup2000 = {
-            "Under $25,000 2000s": Under252000,
-            "$25,000 to $50,000 2000s": to502000,
-            "$50,000 to $75,000 2000s": to752000,
-            "Over $75,000 2000s": Over752000,
+            "Under $25,000 (2000)": Under252000,
+            "$25,000 to $50,000 (2000)": to502000,
+            "$50,000 to $75,000 (2000)": to752000,
+            "Over $75,000 (2000)": Over752000,
         };
         var EducationGroup2000 = {
-            "Middle School 2000s": MS2000,
-            "High School 2000s": HS2000,
-            "College 2000s": College2000
+            "Middle School (2000)": MS2000,
+            "High School (2000)": HS2000,
+            "College (2000)": College2000
         };
         //Map A Zoom
         var mapA = L.map('mapA', {
