@@ -14,11 +14,8 @@
     <script src="d3.min.js"></script>
     <script src="OhioCounties.json"></script>
     <script src="L.Map.Sync.js"></script>
-    
-
 
 </head>
-
 <body>
     <div id="map"></div>
     <div id="container">
@@ -54,7 +51,7 @@ function select1980(){
      L.control.layers(EducationGroup80).addTo(mapB);
     }
     else {
-        alert("page Refreshed");
+        alert("Page refreshed. Please reselect year.");
         document.getElementById("year_1980").checked = false;
         document.getElementById("year_1990").checked = false;
         document.getElementById("year_2000").checked = false;
@@ -69,7 +66,7 @@ function select1990(){
     L.control.layers(EducationGroup90).addTo(mapB);
     }
     else {
-        alert("page Refreshed");
+        alert("Page refreshed. Please reselect year.");
         document.getElementById("year_1980").checked = false;
         document.getElementById("year_1990").checked = false;
         document.getElementById("year_2000").checked = false;
