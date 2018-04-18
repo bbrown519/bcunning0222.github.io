@@ -4,12 +4,12 @@
 <head>
 
     <meta charset="utf-8">
-    <title>A Comparison of Ohio's Religion, Education and Income Rates (1980, 1990 and 2000)</title>
-    <!-- styleSheets -->
+    <title>Religion, Education and Income</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
+    <!-- styleSheets -->
     <link rel="stylesheet" href="interactiveMap.css" />
     <!-- scripts -->
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="OhioCounties.json"></script>
@@ -35,7 +35,7 @@
             <button>Reset</button>
         </div>
     <div class="dropdown">
-        <button class="dropbtn">Click here to choose year.</button>
+        <button class="dropbtn">Open (choose years)</button>
         <div class="dropdown-content">
             <input id = "year_1980" class="year_menu" type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
             <input id = "year_1990"class="year_menu" type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
@@ -76,7 +76,6 @@ function select1990(){
         location.reload();
     }
     select = 1990;
-
 }
 function select2000(){
     if (select===0){
@@ -85,7 +84,6 @@ function select2000(){
     L.control.layers(EducationGroup2000).addTo(mapB);
     }
     else {
-
         alert("page Refreshed");
         document.getElementById("year_1980").checked = false;
         document.getElementById("year_1990").checked = false;
@@ -104,7 +102,6 @@ function select2000(){
             maxZoom: 7,
             id: 'mapbox.light'
         };
-
         var stamenOptions = {
             attribution:
                 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
@@ -120,7 +117,6 @@ function select2000(){
         var map2base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map3base = L.tileLayer(BWstreetmap, REGmapOptions);
         var map1baseW = L.tileLayer(WaterColorMap, stamenOptions);
-
         //Religion Layers 80s
         var Catholic80 = L.geoJson(counties, { style: r180, onEachFeature: onEachFeatureR });
         var EPro80 = L.geoJson(counties, { style: r280, onEachFeature: onEachFeatureR });
@@ -151,7 +147,6 @@ function select2000(){
                 var to502000 = L.geoJson(counties, { style: i200, onEachFeature: onEachFeatureI });
                 var to752000 = L.geoJson(counties, { style: i300, onEachFeature: onEachFeatureI });
                 var Over752000 = L.geoJson(counties, { style: i400, onEachFeature: onEachFeatureI });
-
         //Education Layers80s
         var MS80 = L.geoJson(counties, { style: e180, onEachFeature: onEachFeatureE });
         var HS80 = L.geoJson(counties, { style: e280, onEachFeature: onEachFeatureE });
@@ -164,74 +159,66 @@ function select2000(){
                 var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeatureE });
                 var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeatureE });
                 var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeatureE });
-        var maxBounds = [
-        [38, -84.4], //Southwest
-        [44, -81]  //Northeast
-        ];
         var map = L.map('map', {
             layers: [map1base],
             center: center,
             zoom: 14,
-            zoomControl: false,
-            'maxBounds': maxBounds
-
+            zoomControl: false
         });
-
-var ReligionGroup80 = {
-            "Catholic (1980)": Catholic80,
-            "Evangelical Protestant (1980)": EPro80,
-            "Mainland Protestant (1980)": MPro80,
-            "Other (1980) (Jewish, Muslim, Mormon, etc.)": Other80,
+// this is for the 80s group only
+        var ReligionGroup80 = {
+            "Catholic 80s": Catholic80,
+            "Evangelical Protestant 80s": EPro80,
+            "Mainland Protestant 80s": MPro80,
+            "Other 80s (Jewish, Muslim, Mormon, etc.)": Other80,
         };
         var IncomeGroup80 = {
-            "Under $25,000 (1980)": Under2580,
-            "$25,000 to $50,000 (1980)": to5080,
-            "$50,000 to $75,000 (1980)": to7580,
-            "Over $75,000 (1980)": Over7580,
+            "Under $25,000 80s": Under2580,
+            "$25,000 to $50,000 80s": to5080,
+            "$50,000 to $75,000 80s": to7580,
+            "Over $75,000 80s": Over7580,
         };
         var EducationGroup80 = {
-            "Middle School (1980)": MS80,
-            "High School (1980)": HS80,
-            "College (1980)": College80
+            "Middle School 80s": MS80,
+            "High School 80s": HS80,
+            "College 80s": College80
         };
-        // this is for the (1990) group only
+        // this is for the 90s group only
         var ReligionGroup90 = {
-            "Catholic (1990)": Catholic90,
-            "Evangelical Protestant (1990)": EPro90,
-            "Mainland Protestant (1990)": MPro90,
-            "Other - Jewish, Muslim, Mormon... (1990)": Other90,
+            "Catholic90s": Catholic90,
+            "Evangelical Protestant90s": EPro90,
+            "Mainland Protestant90s": MPro90,
+            "Other90s (Jewish, Muslim, Mormon, etc.)": Other90,
         };
         var IncomeGroup90 = {
-            "Under $25,000 (1990)": Under2590,
-            "$25,000 to $50,000 (1990)": to5090,
-            "$50,000 to $75,000 (1990)": to7590,
-            "Over $75,000 (1990)": Over7590,
+            "Under $25,000 90s": Under2590,
+            "$25,000 to $50,000 90s": to5090,
+            "$50,000 to $75,000 90s": to7590,
+            "Over $75,000 90s": Over7590,
         };
         var EducationGroup90 = {
-            "Middle School (1990)": MS90,
-            "High School (1990)": HS90,
-            "College (1990)": College90
+            "Middle School 90s": MS90,
+            "High School 90s": HS90,
+            "College 90s": College90
         };
-        // this is for the (1980) group only
+        // this is for the 80s group only
         var ReligionGroup2000 = {
-            "Catholic (2000)": Catholic2000,
-            "Evangelical Protestant (2000)": EPro2000,
-            "Mainland Protestant (2000)": MPro2000,
-            "Other (2000) (Jewish, Muslim, Mormon, etc.)": Other2000,
+            "Catholic 2000s": Catholic2000,
+            "Evangelical Protestant 2000s": EPro2000,
+            "Mainland Protestant 2000s": MPro2000,
+            "Other 2000s (Jewish, Muslim, Mormon, etc.)": Other2000,
         };
         var IncomeGroup2000 = {
-            "Under $25,000 (2000)": Under252000,
-            "$25,000 to $50,000 (2000)": to502000,
-            "$50,000 to $75,000 (2000)": to752000,
-            "Over $75,000 (2000)": Over752000,
+            "Under $25,000 2000s": Under252000,
+            "$25,000 to $50,000 2000s": to502000,
+            "$50,000 to $75,000 2000s": to752000,
+            "Over $75,000 2000s": Over752000,
         };
         var EducationGroup2000 = {
-            "Middle School (2000)": MS2000,
-            "High School (2000)": HS2000,
-            "College (2000)": College2000
+            "Middle School 2000s": MS2000,
+            "High School 2000s": HS2000,
+            "College 2000s": College2000
         };
-
-
         //Map A Zoom
         var mapA = L.map('mapA', {
             layers: [map2base],
@@ -356,7 +343,6 @@ var ReligionGroup80 = {
                 fillColor: getColor3(feature.properties.E380)
             };
         }
-
         //right here starts the 90s style
         function r190(feature) {
             return {
@@ -612,85 +598,65 @@ var ReligionGroup80 = {
         //control just the 80s 90s 2000s
         
         
-
-
         var info = L.control({ position: 'topright' });
         geojson = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
         var legend = L.control({ position: 'bottomright' });
-
         legend.onAdd = function (map) {
-
             var div = L.DomUtil.create('div', 'info legend'),
                 grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
                 labels = [],
                 from, to;
-
             for (var i = 0; i < grades.length; i++) {
                 from = grades[i];
                 to = grades[i + 1];
-
                 labels.push(
                     '<i style="background:' + getColor1(from + 1) + '"></i> ' +
                     from + (to ? '%&ndash;' + to + '%' : '%+'));
             }
-
             div.innerHTML = labels.join('<br>');
             return div;
         };
         legend.addTo(map);
-
         //Adding legendA to MapA
         var info = L.control({ position: 'topright' });
         geojson = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
         var legendA = L.control({ position: 'bottomright' });
-
         legendA.onAdd = function (map) {
-
             var div = L.DomUtil.create('div', 'info legend'),
                 grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
                 labels = [],
                 from, to;
-
             for (var i = 0; i < grades.length; i++) {
                 from = grades[i];
                 to = grades[i + 1];
-
                 labels.push(
                     '<i style="background:' + getColor2(from + 1) + '"></i> ' +
                     from + (to ? '%&ndash;' + to + '%' : '%+'));
             }
-
             div.innerHTML = labels.join('<br>');
             return div;
         };
         legendA.addTo(mapA);
-
         //Adding legendB to MapB
         var info = L.control({ position: 'topright' });
         geojson = L.geoJson(counties, { style: style1, onEachFeature: onEachFeature });
         var legendB = L.control({ position: 'bottomright' });
-
         legendB.onAdd = function (map) {
-
             var div = L.DomUtil.create('div', 'info legend'),
                 grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
                 labels = [],
                 from, to;
-
             for (var i = 0; i < grades.length; i++) {
                 from = grades[i];
                 to = grades[i + 1];
-
                 labels.push(
                     '<i style="background:' + getColor3(from + 1) + '"></i> ' +
                     from + (to ? '%&ndash;' + to + '%' : '%+'));
             }
-
             div.innerHTML = labels.join('<br>');
             return div;
         };
         legendB.addTo(mapB);
-
         // get color depending on population density value
                 function getColor3(d) {
             return d > 90 ? 'hsl(225, 80%, 15%)' :
@@ -705,7 +671,6 @@ var ReligionGroup80 = {
                                                 d < 10 ? 'hsl(210, 100%, 98%' :
                                                 '#f7fbff';
         }
-
                 function getColor2(d) {
             return d > 90 ? '#00441b' :
                 d > 80 ? '#006d2c' :
@@ -719,7 +684,6 @@ var ReligionGroup80 = {
                                                 d < 10 ? 'hsl(210, 100%, 98%' :
                                                 '#f7fbff';
         }
-
                 function getColor1(d) {
             return d > 90 ? '#000000' :
                 d > 80 ? '#252525' :
@@ -738,26 +702,26 @@ var ReligionGroup80 = {
             if(select===1980){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>Catholic (1980): </b>" + layer.feature.properties.R180+"%"+
-                "<br><b>Evangelical Protestant (1980): </b>" + layer.feature.properties.R280+"%"+
-                "<br><b>Mainland Protestant (1980): </b>" + layer.feature.properties.R380+"%"+
-                "<br><b>Other (1980): </b>" + layer.feature.properties.R480+"%")
+                "<br><b>catholic 80's-: </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>evangelical 80's-: </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>maniline  80's-: </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>other 80's-: </b>" + layer.feature.properties.R480+"%")
             }
             if(select===1990){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>Catholic (1990): </b>" + layer.feature.properties.R180+"%"+
-                "<br><b>Evangelical Protestant (1990): </b>" + layer.feature.properties.R280+"%"+
-                "<br><b>Mainland Protestant (1990): </b>" + layer.feature.properties.R380+"%"+
-                "<br><b>Other (1990): </b>" + layer.feature.properties.R480+"%")
+                "<br><b>catholic 90's-: </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>evangelical 90's-: </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>maniline 90's-: </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>other 90's-: </b>" + layer.feature.properties.R480+"%")
             }
             if(select===2000){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>Catholic (2000): </b>" + layer.feature.properties.R180+"%"+
-                "<br><b>Evangelical Protestant(2000): </b>" + layer.feature.properties.R280+"%"+
-                "<br><b>Mainland Protestant (2000): </b>" + layer.feature.properties.R380+"%"+
-                "<br><b>Other (2000): </b>" + layer.feature.properties.R480+"%")
+                "<br><b>catholic 2000's-: </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>evangelical 2000's-: </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>maniline 2000's-: </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>other 2000's-: </b>" + layer.feature.properties.R480+"%")
             }
             layer.setStyle({
                 weight: 5,
@@ -771,26 +735,26 @@ var ReligionGroup80 = {
                 if(select===1980){
                     layer.bindPopup(
                     "<b>County: </b>" + layer.feature.properties.name+
-                    "<br><b>Under $25,000 (1980): </b>" + layer.feature.properties.I180+"%"+
-                    "<br><b>$25,000-$50,000 (1980): </b>" + layer.feature.properties.I280+"%"+
-                    "<br><b>$50,000-$75,000 (1980): </b>" + layer.feature.properties.I380+"%"+
-                    "<br><b>Over $75,000 (1980): </b>" + layer.feature.properties.I480+"%")
+                    "<br><b>under $25-000 80's-: </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 80's-: </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 80's-: </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>$75,000+ 80's-: </b>" + layer.feature.properties.I480+"%")
                 }
                 if(select===1990){
                     layer.bindPopup(
                     "<b>County: </b>" + layer.feature.properties.name+
-                    "<br><b>Under $25,000 (1990): </b>" + layer.feature.properties.I180+"%"+
-                    "<br><b>$25,000-$50,000 (1990): </b>" + layer.feature.properties.I280+"%"+
-                    "<br><b>$50,000-$75,000 (1990): </b>" + layer.feature.properties.I380+"%"+
-                    "<br><b>Over $75,000 (1990):  </b>" + layer.feature.properties.I480+"%")
+                    "<br><b>under $25,000 90's-: </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 90's-: </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 90's-: </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>$75,000+ 90's-: </b>" + layer.feature.properties.I480+"%")
                 }
                 if(select===2000){
                     layer.bindPopup(
                     "<b>County: </b>" + layer.feature.properties.name+
-                    "<br><b>Under $25,000 (2000): </b>" + layer.feature.properties.I180+"%"+
-                    "<br><b>$25,000-$50,000 (2000): </b>" + layer.feature.properties.I280+"%"+
-                    "<br><b>$50,000-$75,000 (2000): </b>" + layer.feature.properties.I380+"%"+
-                    "<br><b>Over $75,000 (2000): </b>" + layer.feature.properties.I480+"%")
+                    "<br><b>under $25,000 2000's-: </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 2000's-: </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 2000's-: </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>$75,000+ 2000's-: </b>" + layer.feature.properties.I480+"%")
                 }
                 layer.setStyle({
                 weight: 5,
@@ -799,29 +763,28 @@ var ReligionGroup80 = {
                 fillOpacity: 0.7
             });
             }
-
             function highlightFeatureE(e) {
             var layer = e.target;
             if(select===1980){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>Middle School (1980): </b>" + layer.feature.properties.E180+"%"+
-                "<br><b>High School (1980): </b>" + layer.feature.properties.E280+"%"+
-                "<br><b>College (1980): </b>" + layer.feature.properties.E380+"%")
+                "<br><b>some middle school 80's-: </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>some high school 80's-: </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>some college 80's-: </b>" + layer.feature.properties.E380+"%")
             }
             if(select===1990){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>Middle School (1990): </b>" + layer.feature.properties.E180+"%"+
-                "<br><b>High School (1990): </b>" + layer.feature.properties.E280+"%"+
-                "<br><b>College (1990): </b>" + layer.feature.properties.E380+"%")
+                "<br><b>some middle school 90's-: </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>some high school 90's-: </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>some college 90's-: </b>" + layer.feature.properties.E380+"%")
             }
             if(select===2000){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>Middle School (2000): </b>" + layer.feature.properties.E180+"%"+
-                "<br><b>High School (2000): </b>" + layer.feature.properties.E280+"%"+
-                "<br><b>College (2000): </b>" + layer.feature.properties.E380+"%")
+                "<br><b>some middle school 2000's-: </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>some high school 2000's-: </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>some college 2000's-: </b>" + layer.feature.properties.E380+"%")
             }
             
             layer.setStyle({
@@ -831,11 +794,8 @@ var ReligionGroup80 = {
                 fillOpacity: 0.7
             });
         }
-
-
         function resetHighlight(e) {
             var layer = e.target;
-
             layer.setStyle({
                 weight: .5,
                 opacity: 1,
@@ -844,9 +804,7 @@ var ReligionGroup80 = {
                 fillOpacity: 1
             });
         }
-
        
-
         function onEachFeatureR(feature, layer) {
             var layerStyle = {};
             layer.on({
@@ -868,17 +826,13 @@ var ReligionGroup80 = {
                 mouseout: resetHighlight
             });
         }
-
-
         //!!!!!!!!!!!!!!!!!!!!
         map.sync(mapA, { syncCursor: true });
         map.sync(mapB, { syncCursor: true });
-
         // If you want interaction with mapA|B to be synchronized on map,
         // add other links as well.
         mapA.sync(map, { syncCursor: true });
         mapA.sync(mapB, { syncCursor: true });
-
         mapB.sync(map, { syncCursor: true });
         mapB.sync(mapA, { syncCursor: true });
     </script>
