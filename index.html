@@ -826,6 +826,13 @@ function select2000(){
                 mouseout: resetHighlight
             });
         }
+                function onEachFeature(feature, layer) {
+            var layerStyle = {};
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight
+            });
+        }
         //!!!!!!!!!!!!!!!!!!!!
         map.sync(mapA, { syncCursor: true });
         map.sync(mapB, { syncCursor: true });
