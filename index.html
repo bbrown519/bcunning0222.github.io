@@ -165,7 +165,6 @@ function select2000(){
             zoom: 14,
             zoomControl: false
         });
-// this is for the 80s group only
         var ReligionGroup80 = {
             "Catholic 80s": Catholic80,
             "Evangelical Protestant 80s": EPro80,
@@ -702,26 +701,26 @@ function select2000(){
             if(select===1980){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>catholic 80's-: </b>" + layer.feature.properties.R180+"%"+
-                "<br><b>evangelical 80's-: </b>" + layer.feature.properties.R280+"%"+
-                "<br><b>maniline  80's-: </b>" + layer.feature.properties.R380+"%"+
-                "<br><b>other 80's-: </b>" + layer.feature.properties.R480+"%")
+                "<br><b>Catholic (1980): </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>Evangelical Protestant (1980): </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>Mainland Protestant (1980): </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>Other (1980): </b>" + layer.feature.properties.R480+"%")
             }
             if(select===1990){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>catholic 90's-: </b>" + layer.feature.properties.R180+"%"+
-                "<br><b>evangelical 90's-: </b>" + layer.feature.properties.R280+"%"+
-                "<br><b>maniline 90's-: </b>" + layer.feature.properties.R380+"%"+
-                "<br><b>other 90's-: </b>" + layer.feature.properties.R480+"%")
+                "<br><b>Catholic (1990): </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>Evangelical Protestant (1990): </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>Mainland Protestant (1990): </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>Other (1990): </b>" + layer.feature.properties.R480+"%")
             }
             if(select===2000){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>catholic 2000's-: </b>" + layer.feature.properties.R180+"%"+
-                "<br><b>evangelical 2000's-: </b>" + layer.feature.properties.R280+"%"+
-                "<br><b>maniline 2000's-: </b>" + layer.feature.properties.R380+"%"+
-                "<br><b>other 2000's-: </b>" + layer.feature.properties.R480+"%")
+                "<br><b>Catholic (2000): </b>" + layer.feature.properties.R180+"%"+
+                "<br><b>Evangelical Protestant(2000): </b>" + layer.feature.properties.R280+"%"+
+                "<br><b>Mainland Protestant (2000): </b>" + layer.feature.properties.R380+"%"+
+                "<br><b>Other (2000): </b>" + layer.feature.properties.R480+"%")
             }
             layer.setStyle({
                 weight: 5,
@@ -735,26 +734,26 @@ function select2000(){
                 if(select===1980){
                     layer.bindPopup(
                     "<b>County: </b>" + layer.feature.properties.name+
-                    "<br><b>under $25-000 80's-: </b>" + layer.feature.properties.I180+"%"+
-                    "<br><b>$25,000-$50,000 80's-: </b>" + layer.feature.properties.I280+"%"+
-                    "<br><b>$50,000-$75,000 80's-: </b>" + layer.feature.properties.I380+"%"+
-                    "<br><b>$75,000+ 80's-: </b>" + layer.feature.properties.I480+"%")
+                    "<br><b>Under $25,000 (1980): </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 (1980): </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 (1980): </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>Over $75,000 (1980): </b>" + layer.feature.properties.I480+"%")
                 }
                 if(select===1990){
                     layer.bindPopup(
                     "<b>County: </b>" + layer.feature.properties.name+
-                    "<br><b>under $25,000 90's-: </b>" + layer.feature.properties.I180+"%"+
-                    "<br><b>$25,000-$50,000 90's-: </b>" + layer.feature.properties.I280+"%"+
-                    "<br><b>$50,000-$75,000 90's-: </b>" + layer.feature.properties.I380+"%"+
-                    "<br><b>$75,000+ 90's-: </b>" + layer.feature.properties.I480+"%")
+                    "<br><b>Under $25,000 (1990): </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 (1990): </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 (1990): </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>Over $75,000 (1990):  </b>" + layer.feature.properties.I480+"%")
                 }
                 if(select===2000){
                     layer.bindPopup(
                     "<b>County: </b>" + layer.feature.properties.name+
-                    "<br><b>under $25,000 2000's-: </b>" + layer.feature.properties.I180+"%"+
-                    "<br><b>$25,000-$50,000 2000's-: </b>" + layer.feature.properties.I280+"%"+
-                    "<br><b>$50,000-$75,000 2000's-: </b>" + layer.feature.properties.I380+"%"+
-                    "<br><b>$75,000+ 2000's-: </b>" + layer.feature.properties.I480+"%")
+                    "<br><b>Under $25,000 (2000): </b>" + layer.feature.properties.I180+"%"+
+                    "<br><b>$25,000-$50,000 (2000): </b>" + layer.feature.properties.I280+"%"+
+                    "<br><b>$50,000-$75,000 (2000): </b>" + layer.feature.properties.I380+"%"+
+                    "<br><b>Over $75,000 (2000): </b>" + layer.feature.properties.I480+"%")
                 }
                 layer.setStyle({
                 weight: 5,
@@ -768,23 +767,23 @@ function select2000(){
             if(select===1980){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>some middle school 80's-: </b>" + layer.feature.properties.E180+"%"+
-                "<br><b>some high school 80's-: </b>" + layer.feature.properties.E280+"%"+
-                "<br><b>some college 80's-: </b>" + layer.feature.properties.E380+"%")
+                "<br><b>Middle School (1980): </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>High School (1980): </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>College (1980): </b>" + layer.feature.properties.E380+"%")
             }
             if(select===1990){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>some middle school 90's-: </b>" + layer.feature.properties.E180+"%"+
-                "<br><b>some high school 90's-: </b>" + layer.feature.properties.E280+"%"+
-                "<br><b>some college 90's-: </b>" + layer.feature.properties.E380+"%")
+                "<br><b>Middle School (1990): </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>High School (1990): </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>College (1990): </b>" + layer.feature.properties.E380+"%")
             }
             if(select===2000){
                 layer.bindPopup(
                 "<b>County: </b>" + layer.feature.properties.name+
-                "<br><b>some middle school 2000's-: </b>" + layer.feature.properties.E180+"%"+
-                "<br><b>some high school 2000's-: </b>" + layer.feature.properties.E280+"%"+
-                "<br><b>some college 2000's-: </b>" + layer.feature.properties.E380+"%")
+                "<br><b>Middle School (2000): </b>" + layer.feature.properties.E180+"%"+
+                "<br><b>High School (2000): </b>" + layer.feature.properties.E280+"%"+
+                "<br><b>College (2000): </b>" + layer.feature.properties.E380+"%")
             }
             
             layer.setStyle({
