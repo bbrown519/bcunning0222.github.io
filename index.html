@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Religion, Education and Income</title>
+    <title>A Comparison of Ohio's Religion, Education and Income Rates (1980, 1990 and 2000)</title>
     <!-- styleSheets -->
     <link rel="stylesheet" href="leaflet.css" />
     <link rel="stylesheet" href="interactiveMap.css" />
@@ -35,7 +35,7 @@
             <button>Reset</button>
         </div>
     <div class="dropdown">
-        <button class="dropbtn">Open (choose years)</button>
+        <button class="dropbtn">Click here to choose year.</button>
         <div class="dropdown-content">
             <input id = "year_1980" class="year_menu" type="radio" onclick="select1980()" name="year" value="1980"> 1980<br>
             <input id = "year_1990"class="year_menu" type="radio" onclick="select1990()"name="year" value="1990"> 1990<br>
@@ -159,11 +159,16 @@ function select2000(){
                 var MS2000 = L.geoJson(counties, { style: e100, onEachFeature: onEachFeatureE });
                 var HS2000 = L.geoJson(counties, { style: e200, onEachFeature: onEachFeatureE });
                 var College2000 = L.geoJson(counties, { style: e300, onEachFeature: onEachFeatureE });
+        var maxBounds = [
+        [38, -84.4], //Southwest
+        [44, -81]  //Northeast
+        ];
         var map = L.map('map', {
             layers: [map1base],
             center: center,
             zoom: 14,
-            zoomControl: false
+            zoomControl: false,
+            'maxBounds': maxBounds
         });
         //Layers for the 1980 groups
         var ReligionGroup80 = {
